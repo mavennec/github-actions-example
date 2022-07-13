@@ -14,13 +14,15 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-    - name: Build with Maven 
-      run: ./mvn compile test --file pom.xml
-    - name: Sonar quality
-      run: ./mvn -P sonar -Dsonar.login=$SONAR_TOKEN --file pom.xml clean verify sonar:sonar
+    - name: Maven Package
+      run: mvn -B clean package -DskipTests
+    - name: Maven Verify
+      run: mvn -B clean verify -Pintegration-test
+    - name: SonarCloud Quality
+      uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}      
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}     
     - name: Build failed Notification
       if: failure()
       uses: rtCamp/action-slack-notify@v2.1.0
