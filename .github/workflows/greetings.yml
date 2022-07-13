@@ -7,11 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
-      pull-requests: write
     steps:
       - name: 'Greets Action'
-        # You may pin to the exact commit or the version.
-        # uses: Manoj-Paramsetti/greets-action@514a98c34c34c585c1316371757698ac6af7df48
         uses: Manoj-Paramsetti/greets-action@1.0
         with:
           # Github token
