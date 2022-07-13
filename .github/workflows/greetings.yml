@@ -1,6 +1,6 @@
 name: Greetings
 
-on: [pull_request_target, issues]
+on: [issues]
 
 jobs:
   greeting:
@@ -19,8 +19,4 @@ jobs:
           # issue message to be posted
           issue_message: 'Tu as créé une issue'
           # label to be added
-          labels: 'hello'
-          # label to be added
-          label_1: 'world'
-          # PR message to be posted
-          pr_message: 'Tu as créé une pull request'
+          label_1: 'hello world'
